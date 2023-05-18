@@ -1,19 +1,13 @@
-<ul>
-    <% @movies.each do |movie| %>
-        <li>
-            <strong><%= movie.title %></strong>
+<% @movies.each do |movie| %>
+    <section class="movie">
+        <div class="summsary">
+            <h2><%= movie.title %></h2>
             <p>
                 Synopsis: <i><%= truncate(movie.description, length: 35, separator: " ")  %></i>
             </p>
-            <p>
-                Rating: (<%= movie.rating %>)
-            </p>
-            <p>
+            <h3>
                 Box Office: <%= total_gross(movie) %>
-            </p>
-            <p>
-                Release Date: <i><%= year_of(movie) %></i>
-            </p>
-        </li>
-        <% end %>
-</ul>
+            </h3>
+        </div>
+    </section>
+<% end %>

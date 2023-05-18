@@ -5,6 +5,6 @@ module MoviesHelper
 
     def year_of(movie)
         # formats date to year
-        movie.release_date.year
+        movie.released_on.year
     end
 end
