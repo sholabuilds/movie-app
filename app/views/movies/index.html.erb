@@ -1,7 +1,7 @@
 <% @movies.each do |movie| %>
     <section class="movie">
-        <div class="summsary">
-            <h2><%= movie.title %></h2>
+        <div class="summary">
+            <h2><%= link_to movie.title, movie_path(movie) %></h2>
             <p>
                 Synopsis: <i><%= truncate(movie.description, length: 35, separator: " ")  %></i>
             </p>
