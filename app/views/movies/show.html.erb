@@ -5,6 +5,9 @@
             Synopsis: <i><%= @movie.description  %></i>
         </p>
         <h3>
+            Rating: <%= @movie.rating %>
+        </h3>
+        <h3>
             Release year: <%= year_of(@movie) %>
         </h3>
         <h3>
@@ -15,4 +18,6 @@
 
 <section class="admin">
     <%= link_to "Edit movie", edit_movie_path(@movie), class: "button" %>
+    <%# override method with turbo_method to delete resource %>
+    <%= link_to "Delete movie", movie_path(@movie), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "button" %>
 </section>

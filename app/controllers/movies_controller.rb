@@ -28,6 +28,11 @@ class MoviesController < ApplicationController
         redirect_to movie_path(@movie)
     end
 
+    def destroy
+        Movie.find(params[:id]).destroy;
+        redirect_to movies_path
+    end
+
     private
 
     # specifies attributes we want to permit for update
