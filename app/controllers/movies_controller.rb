@@ -37,6 +37,6 @@ class MoviesController < ApplicationController
 
     # specifies attributes we want to permit for update
     def event_param
-        params.require(:movie).permit(:title, :description, :rating, :released_on, :total_gross);
+        params.require(:movie).permit(:title, :description, :rating, :released_on, :total_gross, :director, :image_file_name, :duration);
     end
 end
