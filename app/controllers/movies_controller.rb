@@ -13,9 +13,12 @@ class MoviesController < ApplicationController
 
     def update
         @movie = Movie.find(params[:id]);
-        @movie.update(event_param)
-        # redirect to show view
-        redirect_to movie_path(@movie)
+        if @movie.update(event_param)
+            # redirect to show view and displays message for user
+            redirect_to movie_path(@movie), notice: "Movie successfully updated!"
+        else
+            render :edit, status: :unprocessable_entity
+        end
     end
 
     def new
@@ -24,13 +27,16 @@ class MoviesController < ApplicationController
 
     def create
         @movie = Movie.new(event_param)
-        @movie.save
-        redirect_to movie_path(@movie)
+        if @movie.save
+            redirect_to movie_path(@movie), notice: "Movie successfully created!"
+        else
+            render :new, status: :unprocessable_entity
+        end
     end
 
     def destroy
         Movie.find(params[:id]).destroy;
-        redirect_to movies_path
+        redirect_to movies_path, alert: "Movie successfully deleted!"
     end
 
     private
