@@ -22,6 +22,10 @@
         <h3>
             Box Office: <%= total_gross(@movie) %>
         </h3>
+
+        <% if @movie.reviews %>
+            <%= link_to pluralize(@movie.reviews.count, "review"), movie_reviews_path(@movie) %>
+        <% end %>
     </div>
 </section>
 

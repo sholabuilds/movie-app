@@ -1,0 +1,23 @@
+<h2>Reviews for <%= @movie.title %></h2>
+<% if @reviews.count > 0 %>
+    <ul class="reviews">
+    <% @reviews.each do |review| %>
+        <li>
+            <%= render "shared/stars", percent: review.stars_as_percent %> 
+            <p>
+                <%= review.name %>
+                <span class="date">
+                    Review created <%= time_ago_in_words(review.created_at) %> ago
+                </span>
+            </p>
+            <p>
+                <i><%= review.comment %></i>
+            </p>
+        </li>
+    <% end %>
+    </ul>
+<% else %>
+    <p>Oh no! There are no reviews yet for this movie. Please check again later.</p>
+<% end %>
+
+<%= link_to "Go back to #{@movie.title}", movie_path(@movie)%>
