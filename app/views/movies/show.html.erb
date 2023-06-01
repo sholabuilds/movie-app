@@ -24,8 +24,14 @@
         </h3>
 
         <% if @movie.reviews %>
-            <%= link_to pluralize(@movie.reviews.count, "review"), movie_reviews_path(@movie) %>
+            <div class="reviews">
+                <%= link_to pluralize(@movie.reviews.count, "review"), movie_reviews_path(@movie) %>
+            </div>
         <% end %>
+
+        <%= render "reviews/review_form", review: @review %>
+
+        <%= link_to "Add review", new_movie_review_path(@movie), class: "review"%>
     </div>
 </section>
 

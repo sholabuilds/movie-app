@@ -1,10 +1,12 @@
 class MoviesController < ApplicationController
+
     def index
         @movies = Movie.all
     end
 
     def show
         @movie = Movie.find(params[:id]);
+        @review = @movie.reviews.new
     end
 
     def edit
@@ -35,7 +37,7 @@ class MoviesController < ApplicationController
     end
 
     def destroy
-        Movie.find(params[:id]).destroy;
+        Movie.find(params[:id]).destroy
         redirect_to movies_path, alert: "Movie successfully deleted!"
     end
 

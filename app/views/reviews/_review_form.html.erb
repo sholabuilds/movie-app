@@ -1,0 +1,18 @@
+<%# All models from nested resources need to be passed as an array arg %>
+<%= form_with(model: [@movie, @review]) do |f| %>
+     <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, maxlength: 15, size: 5 %>
+
+    <%= f.label :stars %>
+        <% Review::STARS.each do |star| %>
+            <span class="star">
+                <%= f.radio_button :stars, star %>
+                <%= label_tag star %>
+            </span>
+        <% end %>
+
+    <%= f.label :comment %>
+    <%= f.text_area :comment, autofocus: true, maxlength: 100 %>
+
+    <%= f.submit %>
+<% end %>
