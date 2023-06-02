@@ -1,4 +1,4 @@
-<h2>Reviews for <%= @movie.title %></h2>
+<h2>Reviews for <%= link_to @movie.title, movie_path(@movie) %></h2>
 <% if @reviews.count > 0 %>
     <ul class="reviews">
         <% @reviews.each do |review| %>
@@ -13,6 +13,7 @@
                 <p>
                     <i><%= review.comment %></i>
                 </p>
+                <%= link_to "Edit review", edit_movie_review_path(review.movie, review), class: "button" %>
                 <%# movie_review_path requires two args for the associated movie id and the review id %>
                 <%= link_to "Delete review", movie_review_path(review.movie, review), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete review?"}, class: "button" %>
             </li>

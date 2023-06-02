@@ -18,6 +18,20 @@ class ReviewsController < ApplicationController
         end
     end
 
+    def edit
+        @review = @movie.reviews.find(params[:id])
+    end
+
+    def update
+        @review = @movie.reviews.find(params[:id])
+        if @review.update(reviews_params)
+            redirect_to movie_reviews_path(@movie), notice: "You've successfully edited your review!"
+        else
+            render :edit, status: :unprocessable_entity
+        end
+    end
+
+
     def destroy
         @movie.reviews.find(params[:id]).destroy
 
