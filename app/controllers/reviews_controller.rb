@@ -19,9 +19,9 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-        @movie.reviews.destroy_all
+        @movie.reviews.find(params[:id]).destroy
 
-        redirect_to movie_path, alert: "Reviews successfully deleted!"
+        redirect_to movie_path(@movie), alert: "Review successfully deleted!"
     end
 
     private
