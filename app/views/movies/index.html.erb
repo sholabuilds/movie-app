@@ -20,6 +20,7 @@
             <h3>
                 Released on: <%= movie.released_on %>
             </h3>
+            <%= render "shared/stars", percent: movie.average_stars_as_percent %>
         </div>
     </section>
 <% end %>
