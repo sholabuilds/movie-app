@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
     def destroy
         find_user.destroy
-        redirect_to users_path, alert: "Profile successfully deleted!"
+        redirect_to users_path, status: :see_other, alert: "Profile successfully deleted!"
     end
 
     private
