@@ -1,7 +1,7 @@
 <h2>User profile</h2>
 <section class="user">
     <%= profile_image(@user) %>
-    <p><%= @user.name %></p>
+    <p><%= @user.username %></p>
     <p><%= mail_to(@user.email) %></p>
     <p><i>Member since: <%= @user.created_at.strftime("%b %Y") %></i></p>
 
