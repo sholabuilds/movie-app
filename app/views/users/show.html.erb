@@ -1,0 +1,11 @@
+<h2>User profile</h2>
+<section class="user">
+    <p><%= @user.name %></p>
+    <p><%= mail_to(@user.email) %></p>
+    <p><i>Member since: <%= @user.created_at.strftime("%b %Y") %></i></p>
+
+    <%= link_to "Edit profile", edit_user_path(@user), class: "button" %>
+    <%= link_to "Delete profile", user_path(@user), data: { 
+        turbo_method: :delete, turbo_confirm: "Are you sure you want to delete your profile?", class: "button"
+     } %>
+</section>

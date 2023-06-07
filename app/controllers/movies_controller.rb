@@ -5,16 +5,16 @@ class MoviesController < ApplicationController
     end
 
     def show
-        @movie = Movie.find(params[:id]);
+        @movie = find_movie
         @review = @movie.reviews.new
     end
 
     def edit
-        @movie = Movie.find(params[:id]);
+        @movie = find_movie
     end
 
     def update
-        @movie = Movie.find(params[:id]);
+        @movie = find_movie
         if @movie.update(event_param)
             # redirect to show view and displays message for user
             redirect_to movie_path(@movie), notice: "Movie successfully updated!"
@@ -37,7 +37,7 @@ class MoviesController < ApplicationController
     end
 
     def destroy
-        Movie.find(params[:id]).destroy
+        find_movie.destroy
         redirect_to movies_path, alert: "Movie successfully deleted!"
     end
 
@@ -46,5 +46,9 @@ class MoviesController < ApplicationController
     # specifies attributes we want to permit for update
     def event_param
         params.require(:movie).permit(:title, :description, :rating, :released_on, :total_gross, :director, :image_file_name, :duration);
+    end
+
+    def find_movie
+        Movie.find(params[:id])
     end
 end
