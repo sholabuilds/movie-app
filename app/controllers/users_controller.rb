@@ -10,6 +10,8 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
+            # logs the user in
+            session[:user_id] = @user.id
             redirect_to user_path(@user), notice: "Thanks for signing up!"
         else
             render :new, status: :unprocessable_entity
@@ -36,7 +38,8 @@ class UsersController < ApplicationController
 
     def destroy
         find_user.destroy
-        redirect_to users_path, status: :see_other, alert: "Profile successfully deleted!"
+        session[:user_id] = nil
+        redirect_to movies_path, status: :see_other, alert: "Profile successfully deleted!"
     end
 
     private
